@@ -24,6 +24,14 @@ extern pthread_mutex_t _cncDebugMutex;
 {% set paramTag = (stepfun.tag|count) <= 8 -%}
 /* {{stepfun.collName}} setup/teardown function */
 ocrGuid_t _{{g.name}}_cncStep_{{stepfun.collName}}(u32 paramc, u64 paramv[], u32 depc, ocrEdtDep_t depv[]) {
+    u64 di = 0;
+    for ( ; di < depc; di++) {
+        if (ocrGuidIsFailure(depv[di].guid)) {
+              PRINTF("dep(%d) is a FAILURE_GUID ... \n", di);
+              return NULL_GUID;
+        }
+    }
+
     {{util.g_ctx_param()}} = depv[0].ptr;
 
     u64 *_tag = {{ "paramv" if paramTag else "depv[1].ptr" }}; MAYBE_UNUSED(_tag);
@@ -106,8 +114,10 @@ static void cncPrescribeInternal_{{stepfun.collName}}({{
 
     s32 _edtSlot = 0; MAYBE_UNUSED(_edtSlot);
     ocrAddDependence({{util.g_ctx_var()}}->_guids.self, _stepGuid, _edtSlot++, _CNC_AUX_DATA_MODE);
+    ocrAddEventSatisfier(_stepGuid,{{util.g_ctx_var()}}->_guids.self, (u64)9);
     {% if not paramTag -%}
     ocrAddDependence(_tagGuid, _stepGuid, _edtSlot++, _CNC_AUX_DATA_MODE);
+    ocrAddEventSatisfier(_stepGuid,_tagGuid, (u64)10);
     {% endif -%}
 
     {#-/****** Set up input items *****/#}
