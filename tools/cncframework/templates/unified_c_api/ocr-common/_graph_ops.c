@@ -135,9 +135,9 @@ static void _distSetup({{util.g_ctx_param()}}) {
                     /*properties=*/EDT_PROP_NONE,
                     /*hint=*/_cncEdtAffinityHint(&hint, loc), /*outEvent=*/NULL);
             ocrAddDependence({{util.g_ctx_var()}}->_guids.self, edtGuid, 0, DB_MODE_RO);
-            ocrAddEventSatisfier(edtGuid, {{util.g_ctx_var()}}->_guids.self, (u64)1);
+            ////ocrAddEventSatisfier(edtGuid, {{util.g_ctx_var()}}->_guids.self, (u64)1);
             ocrAddDependence(remoteCtx, edtGuid, 1, DB_DEFAULT_MODE);
-            ocrAddEventSatisfier(edtGuid, remoteCtx, (u64)2);
+            ////ocrAddEventSatisfier(edtGuid, remoteCtx, (u64)2);
         }
     }
     ocrEdtTemplateDestroy(templGuid);
@@ -282,9 +282,9 @@ void {{g.name}}_launch({{util.g_args_param()}}, {{util.g_ctx_param()}}) {
     }
     // start the graph execution
     ocrAddDependence(argsDbGuid, graphEdtGuid, 1, DB_DEFAULT_MODE);
-    ocrAddEventSatisfier(graphEdtGuid, argsDbGuid, (u64)7);
+    ////ocrAddEventSatisfier(graphEdtGuid, argsDbGuid, (u64)7);
     ocrAddDependence({{util.g_ctx_var()}}->_guids.self, graphEdtGuid, 2, DB_DEFAULT_MODE);
-    ocrAddEventSatisfier(graphEdtGuid, {{util.g_ctx_var()}}->_guids.self, (u64)8);
+    ////ocrAddEventSatisfier(graphEdtGuid, {{util.g_ctx_var()}}->_guids.self, (u64)8);
 }
 
 void {{g.name}}_await({{
