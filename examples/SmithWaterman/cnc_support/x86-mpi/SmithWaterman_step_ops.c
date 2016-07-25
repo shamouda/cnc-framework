@@ -17,6 +17,14 @@ extern pthread_mutex_t _cncDebugMutex;
 
 /* cncFinalize setup/teardown function */
 ocrGuid_t _SmithWaterman_cncStep_cncFinalize(u32 paramc, u64 paramv[], u32 depc, ocrEdtDep_t depv[]) {
+    u64 di = 0;
+    for ( ; di < depc; di++) {
+        if (ocrGuidIsFailure(depv[di].guid)) {
+              PRINTF("dep(%d) is a FAILURE_GUID ... \n", di);
+              return NULL_GUID;
+        }
+    }
+
     SmithWatermanCtx *ctx = depv[0].ptr;
 
     u64 *_tag = paramv; MAYBE_UNUSED(_tag);
@@ -67,6 +75,7 @@ static void cncPrescribeInternal_cncFinalize(u64 *_tag, SmithWatermanCtx *ctx) {
 
     s32 _edtSlot = 0; MAYBE_UNUSED(_edtSlot);
     ocrAddDependence(ctx->_guids.self, _stepGuid, _edtSlot++, _CNC_AUX_DATA_MODE);
+    ocrAddEventSatisfier(_stepGuid,ctx->_guids.self, (u64)9);
 
 
     { // Set up "startTime" input dependencies
@@ -129,6 +138,14 @@ void cncPrescribe_cncFinalize(SmithWatermanCtx *ctx) {
 
 /* swStep setup/teardown function */
 ocrGuid_t _SmithWaterman_cncStep_swStep(u32 paramc, u64 paramv[], u32 depc, ocrEdtDep_t depv[]) {
+    u64 di = 0;
+    for ( ; di < depc; di++) {
+        if (ocrGuidIsFailure(depv[di].guid)) {
+              PRINTF("dep(%d) is a FAILURE_GUID ... \n", di);
+              return NULL_GUID;
+        }
+    }
+
     SmithWatermanCtx *ctx = depv[0].ptr;
 
     u64 *_tag = paramv; MAYBE_UNUSED(_tag);
@@ -186,6 +203,7 @@ static void cncPrescribeInternal_swStep(u64 *_tag, SmithWatermanCtx *ctx) {
 
     s32 _edtSlot = 0; MAYBE_UNUSED(_edtSlot);
     ocrAddDependence(ctx->_guids.self, _stepGuid, _edtSlot++, _CNC_AUX_DATA_MODE);
+    ocrAddEventSatisfier(_stepGuid,ctx->_guids.self, (u64)9);
 
 
     { // Set up "data" input dependencies

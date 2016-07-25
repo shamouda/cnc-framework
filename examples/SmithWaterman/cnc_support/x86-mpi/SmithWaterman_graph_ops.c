@@ -135,7 +135,9 @@ static void _distSetup(SmithWatermanCtx *ctx) {
                     /*properties=*/EDT_PROP_NONE,
                     /*hint=*/_cncEdtAffinityHint(&hint, loc), /*outEvent=*/NULL);
             ocrAddDependence(ctx->_guids.self, edtGuid, 0, DB_MODE_RO);
+            ocrAddEventSatisfier(edtGuid, ctx->_guids.self, (u64)1);
             ocrAddDependence(remoteCtx, edtGuid, 1, DB_DEFAULT_MODE);
+            ocrAddEventSatisfier(edtGuid, remoteCtx, (u64)2);
         }
     }
     ocrEdtTemplateDestroy(templGuid);
@@ -229,8 +231,10 @@ void SmithWaterman_launch(SmithWatermanArgs *args, SmithWatermanCtx *ctx) {
         ocrEdtTemplateDestroy(edtTemplateGuid);
         // hook the graph's quiescedEvent into the graph's output event
         ocrAddDependence(outEventGuid, ctx->_guids.quiescedEvent, 0, DB_MODE_NULL);
+        ocrAddEventSatisfier(ctx->_guids.quiescedEvent, outEventGuid, (u64)3);
         // don't start until the context is fully initialized
         ocrAddDependence(ctx->_guids.contextReady, graphEdtGuid, 0, DB_MODE_NULL);
+        ocrAddEventSatisfier(graphEdtGuid, ctx->_guids.contextReady, (u64)4);
     }
     // finish initializing the context
     {
@@ -257,6 +261,7 @@ void SmithWaterman_launch(SmithWatermanArgs *args, SmithWatermanCtx *ctx) {
         ocrEdtTemplateDestroy(edtTemplateGuid);
         // hook the graph's finalizedEvent into the finalizer's output event
         ocrAddDependence(outEventGuid, ctx->_guids.finalizedEvent, 0, DB_MODE_NULL);
+        ocrAddEventSatisfier(ctx->_guids.finalizedEvent, outEventGuid, (u64)5);
     }
     // set up the EDT that controls the graph's doneEvent
     {
@@ -271,10 +276,13 @@ void SmithWaterman_launch(SmithWatermanArgs *args, SmithWatermanCtx *ctx) {
             /*outEvent=*/&outEventGuid);
         ocrEdtTemplateDestroy(edtTemplateGuid);
         ocrAddDependence(outEventGuid, ctx->_guids.doneEvent, 0, DB_MODE_NULL);
+        ocrAddEventSatisfier(ctx->_guids.doneEvent, outEventGuid, (u64)6);
     }
     // start the graph execution
     ocrAddDependence(argsDbGuid, graphEdtGuid, 1, DB_DEFAULT_MODE);
+    ocrAddEventSatisfier(graphEdtGuid, argsDbGuid, (u64)7);
     ocrAddDependence(ctx->_guids.self, graphEdtGuid, 2, DB_DEFAULT_MODE);
+    ocrAddEventSatisfier(graphEdtGuid, ctx->_guids.self, (u64)8);
 }
 
 void SmithWaterman_await(SmithWatermanCtx *ctx) {
