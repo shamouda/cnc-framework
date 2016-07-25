@@ -114,7 +114,7 @@ static void cncPrescribeInternal_{{stepfun.collName}}({{
 
     s32 _edtSlot = 0; MAYBE_UNUSED(_edtSlot);
     ocrAddDependence({{util.g_ctx_var()}}->_guids.self, _stepGuid, _edtSlot++, _CNC_AUX_DATA_MODE);
-    ocrAddEventSatisfier(_stepGuid,{{util.g_ctx_var()}}->_guids.self, (u64)9);
+    //////ocrAddEventSatisfier(_stepGuid,{{util.g_ctx_var()}}->_guids.self, (u64)9);
     {% if not paramTag -%}
     ocrAddDependence(_tagGuid, _stepGuid, _edtSlot++, _CNC_AUX_DATA_MODE);
     ocrAddEventSatisfier(_stepGuid,_tagGuid, (u64)10);
