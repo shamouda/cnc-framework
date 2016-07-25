@@ -1,8 +1,38 @@
 #include "SmithWaterman.h"
 #include <stdlib.h>
 
+#define ENABLE_EXTENSION_AFFINITY
+#include <extensions/ocr-affinity.h>
+
 static inline int max_score(int x, int y) {
     return (x > y) ? x : y;
+}
+
+int currentAffinity() {
+    // Create EDT hints
+    ocrGuid_t* affinities;
+    u64 affinityCount;
+    ocrAffinityCount(AFFINITY_PD, &affinityCount);
+    ocrGuid_t affDbGuid;
+    ocrDbCreate(&affDbGuid, (void **) &affinities, affinityCount*sizeof(ocrGuid_t), DB_PROP_NONE, NULL_HINT, NO_ALLOC);
+    ocrAffinityGet(AFFINITY_PD, &affinityCount, affinities);
+    ocrDbRelease(affDbGuid);
+    ocrGuid_t curAffinity;
+    ocrAffinityGetCurrent(&curAffinity);
+    int location=0;
+    for (; location < affinityCount; location++) {
+         if (ocrGuidIsEq(curAffinity,affinities[location])){
+             break;
+         }
+    }
+    return location;
+}
+
+void killAtAffinity(int victim) {
+    int currAffinity = currentAffinity();
+    if (currAffinity == victim) {
+        assert ( false && "killing here" );
+    }
 }
 
 /**
@@ -11,6 +41,8 @@ static inline int max_score(int x, int y) {
 void SmithWaterman_swStep(cncTag_t i, cncTag_t j, SeqData *data, int *above, int *left, SmithWatermanCtx *ctx) {
     int ii, jj;
     //assert(!above || !left || above[0] == left[0] && "Diagonal values should match");
+
+    killAtAffinity(1);
 
     /* Allocate a haloed local matrix for calculating 'this' tile*/
     /* 2D-ify it for readability */
