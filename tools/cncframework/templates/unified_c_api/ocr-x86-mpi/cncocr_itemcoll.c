@@ -66,9 +66,9 @@ void _cncItemCollUpdate(cncItemCollHandle_t handle, cncTag_t *tag, u32 tagLength
                 /*hint=*/_cncEdtAffinityHint(&hint, affinity),
                 /*outEvent=*/NULL);
         ocrAddDependence(pGuid, edt, 0, DB_MODE_RO);
-        ////ocrAddEventSatisfier(edt, pGuid, (u64)11);
+        //////ocrAddEventSatisfier(edt, pGuid, (u64)11);
         ocrAddDependence(remoteCtx, edt, 1, DB_MODE_RO);
-        ////ocrAddEventSatisfier(edt, remoteCtx, (u64)12);
+        //////ocrAddEventSatisfier(edt, remoteCtx, (u64)12);
         ocrEdtTemplateDestroy(tmpl);
     }
 }
