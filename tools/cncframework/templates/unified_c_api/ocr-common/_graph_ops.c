@@ -282,7 +282,7 @@ void {{g.name}}_launch({{util.g_args_param()}}, {{util.g_ctx_param()}}) {
     }
     // start the graph execution
     ocrAddDependence(argsDbGuid, graphEdtGuid, 1, DB_DEFAULT_MODE);
-    ocrAddEventSatisfier(graphEdtGuid, argsDbGuid, (u64)7);
+    /////ocrAddEventSatisfier(graphEdtGuid, argsDbGuid, (u64)7);
     ocrAddDependence({{util.g_ctx_var()}}->_guids.self, graphEdtGuid, 2, DB_DEFAULT_MODE);
     ocrAddEventSatisfier(graphEdtGuid, {{util.g_ctx_var()}}->_guids.self, (u64)8);
 }
