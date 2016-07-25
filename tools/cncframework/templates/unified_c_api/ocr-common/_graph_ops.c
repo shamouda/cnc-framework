@@ -137,7 +137,7 @@ static void _distSetup({{util.g_ctx_param()}}) {
             ocrAddDependence({{util.g_ctx_var()}}->_guids.self, edtGuid, 0, DB_MODE_RO);
             ocrAddEventSatisfier(edtGuid, {{util.g_ctx_var()}}->_guids.self, (u64)1);
             ocrAddDependence(remoteCtx, edtGuid, 1, DB_DEFAULT_MODE);
-            ocrAddEventSatisfier(edtGuid, remoteCtx, (u64)2);
+            ////ocrAddEventSatisfier(edtGuid, remoteCtx, (u64)2);
         }
     }
     ocrEdtTemplateDestroy(templGuid);
