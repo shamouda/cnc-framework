@@ -42,7 +42,8 @@ void SmithWaterman_swStep(cncTag_t i, cncTag_t j, SeqData *data, int *above, int
     int ii, jj;
     //assert(!above || !left || above[0] == left[0] && "Diagonal values should match");
 
-    killAtAffinity(1);
+    printf( "Here[%d]  SmithWaterman_swStep(%d,%d) \n" , currentAffinity(), (u32)i , (u32)j);
+    //killAtAffinity(1);
 
     /* Allocate a haloed local matrix for calculating 'this' tile*/
     /* 2D-ify it for readability */
