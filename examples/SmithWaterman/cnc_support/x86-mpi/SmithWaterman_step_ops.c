@@ -260,7 +260,7 @@ void cncPrescribe_swStep(cncTag_t i, cncTag_t j, SmithWatermanCtx *ctx) {
     u64 _args[] = { (u64)i, (u64)j };
     // affinity
     #ifdef CNC_AFFINITIES
-    const cncLocation_t _loc = j % ctx->_affinityCount;
+    const cncLocation_t _loc = (i ) % ctx->_affinityCount;
     if (_loc != ctx->_rank) {
         const ocrGuid_t _remoteCtx = ctx->_affinities[_loc];
         const ocrGuid_t _affinity = _cncAffinityFromCtx(_remoteCtx);

@@ -1,4 +1,4 @@
-[ above ]: { distfn: (i / 16) % $RANKS };
-[ left ]: { distfn: (i / 16) % $RANKS };
+[ above ]: { distfn: (i ) % $RANKS };
+[ left ]: { distfn: (i ) % $RANKS };
 
-( swStep ): { distfn: (i / 16) % $RANKS };
+( swStep ): { distfn: (i ) % $RANKS };

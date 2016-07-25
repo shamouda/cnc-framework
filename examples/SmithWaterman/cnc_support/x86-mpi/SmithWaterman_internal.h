@@ -25,8 +25,8 @@ void cncGet_startTime(ocrGuid_t destination, u32 slot, ocrDbAccessMode_t mode, S
 
 
 #ifdef CNC_AFFINITIES
-static inline cncLocation_t _cncItemDistFn_above(cncTag_t i, cncTag_t j, SmithWatermanCtx *ctx) { return j % ctx->_affinityCount; }
-static inline cncLocation_t _cncItemDistFn_left(cncTag_t i, cncTag_t j, SmithWatermanCtx *ctx) { return j % ctx->_affinityCount; }
+static inline cncLocation_t _cncItemDistFn_above(cncTag_t i, cncTag_t j, SmithWatermanCtx *ctx) { return (i ) % ctx->_affinityCount; }
+static inline cncLocation_t _cncItemDistFn_left(cncTag_t i, cncTag_t j, SmithWatermanCtx *ctx) { return (i ) % ctx->_affinityCount; }
 static inline cncLocation_t _cncItemDistFn_data(SmithWatermanCtx *ctx) { return 2 % ctx->_affinityCount; }
 static inline cncLocation_t _cncItemDistFn_startTime(SmithWatermanCtx *ctx) { return 3 % ctx->_affinityCount; }
 #endif /* CNC_AFFINITIES */
