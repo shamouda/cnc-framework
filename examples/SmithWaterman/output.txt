@@ -1,0 +1,105 @@
+make: Nothing to be done for `install'.
+Testing string1-small.txt vs string2-small.txt with width=3, height=3
+WORKLOAD_ARGS used: '3 3 /home/659/ssh659/rice/xstg/apps/apps/smithwaterman/datasets/string1-small.txt /home/659/ssh659/rice/xstg/apps/apps/smithwaterman/datasets/string2-small.txt'
+WARNING: Should specify OCR_NUM_NODES or OCR_NODEFILE. Assuming 2 nodes.
+cd ./install/x86-mpi && \
+	mpirun -np 2  ./SmithWaterman -ocr:cfg generated.cfg 3 3 /home/659/ssh659/rice/xstg/apps/apps/smithwaterman/datasets/string1-small.txt /home/659/ssh659/rice/xstg/apps/apps/smithwaterman/datasets/string2-small.txt
+--------------------------------------------------------------------------
+WARNING: Open MPI will create a shared memory backing file in a
+directory that appears to be mounted on a network filesystem.
+Creating the shared memory backup file on a network file system, such
+as NFS or Lustre is not recommended -- it may cause excessive network
+traffic to your file servers and/or cause shared memory traffic in
+Open MPI to be much slower than expected.
+
+You may want to check what the typical temporary directory is on your
+node.  Possible sources of the location of this temporary directory
+include the $TEMPDIR, $TEMP, and $TMP environment variables.
+
+Note, too, that system administrators can set a list of filesystems
+where Open MPI is disallowed from creating temporary files by setting
+the MCA parameter "orte_no_session_dir".
+
+  Local host: raijin1
+  Fileame:    /short/v29/ssh659/tmp/openmpi-sessions-ssh659@raijin1_0/20134/1/shared_mem_pool.raijin1
+
+You can set the MCA paramter shmem_mmap_enable_nfs_warning to 0 to
+disable this message.
+--------------------------------------------------------------------------
+Tile width:  3
+Tile height: 3
+Size of input sequence 1 has length 9
+Size of input sequence 2 has length 9
+Imported 3 x 3 tiles.
+Here[0] ocrAddSatisfier TYPE[3] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[4] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[1] edt=1  event=0 
+Here[0] ocrAddSatisfier TYPE[2] edt=1  event=1 
+Here[0] ocrAddSatisfier TYPE[5] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[6] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[7] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[8] edt=0  event=0 
+Here[1] ocrAddSatisfier TYPE[9] edt=1  event=1 
+Here[1] ocrAddSatisfier TYPE[13] edt=1  event=1 
+Here[1] ocrAddSatisfier TYPE[11] edt=0  event=1 
+Here[1] ocrAddSatisfier TYPE[12] edt=0  event=0 
+Here[1] ocrAddSatisfier TYPE[13] edt=1  event=1 
+Here[0] ocrAddSatisfier TYPE[11] edt=1  event=0 
+Here[0] ocrAddSatisfier TYPE[12] edt=1  event=1 
+Here[0] ocrAddSatisfier TYPE[9] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[9] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[9] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[11] edt=1  event=0 
+Here[0] ocrAddSatisfier TYPE[12] edt=1  event=1 
+Here[0] ocrAddSatisfier TYPE[9] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[1] ocrAddSatisfier TYPE[11] edt=0  event=1 
+Here[1] ocrAddSatisfier TYPE[12] edt=0  event=0 
+Here[1] ocrAddSatisfier TYPE[9] edt=1  event=1 
+Here[1] ocrAddSatisfier TYPE[13] edt=1  event=1 
+Here[1] ocrAddSatisfier TYPE[13] edt=1  event=1 
+Here[1] ocrAddSatisfier TYPE[13] edt=1  event=1 
+Here[0] ocrAddSatisfier TYPE[13] edt=1  event=0 
+Here[0] ocrAddSatisfier TYPE[11] edt=1  event=0 
+Here[0] ocrAddSatisfier TYPE[12] edt=1  event=1 
+Here[0] ocrAddSatisfier TYPE[9] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[11] edt=1  event=0 
+Here[0] ocrAddSatisfier TYPE[12] edt=1  event=1 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[11] edt=1  event=0 
+Here[1] ocrAddSatisfier TYPE[13] edt=0  event=1 
+Here[1] ocrAddSatisfier TYPE[11] edt=0  event=1 
+Here[1] ocrAddSatisfier TYPE[12] edt=0  event=0 
+Here[1] ocrAddSatisfier TYPE[9] edt=1  event=1 
+Here[1] ocrAddSatisfier TYPE[13] edt=1  event=1 
+Here[1] ocrAddSatisfier TYPE[13] edt=1  event=1 
+Here[1] ocrAddSatisfier TYPE[13] edt=1  event=1 
+Here[1] ocrAddSatisfier TYPE[11] edt=0  event=1 
+Here[1] ocrAddSatisfier TYPE[12] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[12] edt=1  event=1 
+Here[0] ocrAddSatisfier TYPE[11] edt=1  event=0 
+Here[0] ocrAddSatisfier TYPE[12] edt=1  event=1 
+Here[0] ocrAddSatisfier TYPE[9] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[11] edt=1  event=0 
+Here[0] ocrAddSatisfier TYPE[12] edt=1  event=1 
+Here[0] ocrAddSatisfier TYPE[9] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[13] edt=0  event=0 
+Here[0] ocrAddSatisfier TYPE[11] edt=1  event=0 
+Here[0] ocrAddSatisfier TYPE[12] edt=1  event=1 
+The computation took 0.004676 seconds
+score: 10
+[raijin1:30323] 1 more process has sent help message help-opal-shmem-mmap.txt / mmap on nfs
+[raijin1:30323] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+OK
